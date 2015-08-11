@@ -167,7 +167,7 @@ __gx->dispCopyDst = (__gx->dispCopyDst & ~0xff000000) | (_SHIFTL(0x4d,24,8))
    } \
 }
 
-static void __SETVCDATTR(struct __gx_regdef *__gx, u8 attr,u8 type)
+/*static void __SETVCDATTR(struct __gx_regdef *__gx, u8 attr,u8 type)
 {
    switch(attr)
    {
@@ -240,7 +240,7 @@ static void __SETVCDATTR(struct __gx_regdef *__gx, u8 attr,u8 type)
          __gx->vcdHi = (__gx->vcdHi&~0xc000)|(_SHIFTL(type,14,2));
          break;
    }
-}
+}*/
 
 #define XSHIFT 2
 #define YSHIFT 2
@@ -744,7 +744,7 @@ static inline void __GX_SetViewportJitter(f32 xOrig,f32 yOrig,f32 wd,f32 ht,f32 
    FIFO_PUTF32(f);
 }
 
-static void __GX_SetCopyFilter(u8 aa,u8 sample_pattern[12][2],u8 vf,u8 vfilter[7])
+/*static void __GX_SetCopyFilter(u8 aa,u8 sample_pattern[12][2],u8 vf,u8 vfilter[7])
 {
    u32 reg01=0,reg02=0,reg03=0,reg04=0,reg53=0,reg54=0;
    if(aa)
@@ -802,7 +802,7 @@ static void __GX_SetCopyFilter(u8 aa,u8 sample_pattern[12][2],u8 vf,u8 vfilter[7
    }
    GX_LOAD_BP_REG(reg53);
    GX_LOAD_BP_REG(reg54);
-}
+}*/
 
 #define __GX_Position1x8(index) FIFO_PUTU8(index)
 #define __GX_TexCoord1x8(index) FIFO_PUTU8(index)
