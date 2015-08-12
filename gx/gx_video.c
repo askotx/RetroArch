@@ -974,12 +974,14 @@ static bool gx_frame(void *data, const void *frame,
 
       gx_blit_line(x, y, fps_text_buf);
       y += FONT_HEIGHT * (gx->double_strike ? 1 : 2);
-      snprintf(mem1_txt, sizeof(mem1_txt), "MEM1: %8d / %8d", SYSMEM1_SIZE - SYS_GetArena1Size(), SYSMEM1_SIZE);
+      snprintf(mem1_txt, sizeof(mem1_txt), "MEM1: %.2fMB / %.2fMB", 
+      (float)((SYSMEM1_SIZE - SYS_GetArena1Size())/1024/1024), (float)(SYSMEM1_SIZE/1024/1024));
       gx_blit_line(x, y, mem1_txt);
 #ifdef HW_RVL
       y += FONT_HEIGHT * (gx->double_strike ? 1 : 2);
       char mem2_txt[128];
-      snprintf(mem2_txt, sizeof(mem2_txt), "MEM2: %8d / %8d", gx_mem2_used(), gx_mem2_total());
+      snprintf(mem2_txt, sizeof(mem2_txt), "MEM2: %.2fMB / %.2fMB", 
+        (float)(gx_mem2_used()/1024/1024), (float)(gx_mem2_total()/1024/1024));
       gx_blit_line(x, y, mem2_txt);
 #endif
    }

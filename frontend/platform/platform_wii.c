@@ -41,6 +41,13 @@ extern uint8_t _binary_wii_app_booter_app_booter_bin_end[];
 char gx_rom_path[PATH_MAX];
 #endif
 
+/*
+*#ifdef USE_VM
+*  #include "../wii/utils/vm/vm.h"
+*	#include "../wii/vmalloc.h"
+*#endif
+*/
+
 static void dol_copy_argv_path(const char *dolpath, const char *argpath)
 {
    char tmp[PATH_MAX];

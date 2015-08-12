@@ -93,7 +93,12 @@ int main(int argc, char *argv[])
 
    if (!frontend_ctx)
       return 0;
-
+      
+   /*
+   *#if defined(HW_RVL) && defined (USE_VM)
+   *VM_Init(ARAM_SIZE, MRAM_BACKING);
+   *#endif
+   */
    if (frontend_ctx && frontend_ctx->init)
       frontend_ctx->init(args);
 
