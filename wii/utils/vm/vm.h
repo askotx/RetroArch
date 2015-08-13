@@ -13,20 +13,24 @@
 #include <ogc/machine/processor.h>
 #include <stdio.h>
 
-#define KB 				(1024)
-#define MB				(1024*KB)
+#define KB 				    (1024)
+#define MB				    (1024*KB)
 #define MRAM_BACKING	(4*MB)			// Use 2MB to page our 16MB
 #define ARAM_RESERVED	(64*KB)			// Reserved for DSP/AESND/etc
 #define ARAM_VM_BASE	(0x7F000000)	// Map ARAM to here
 #define ARAM_START		(ARAM_RESERVED + ARAM_VM_BASE) 
-#define ARAM_SIZE		((16*MB) - ARAM_RESERVED)	// ARAM is ~16MB
+#define ARAM_SIZE		  ((16*MB) - ARAM_RESERVED)	// ARAM is ~16MB
+
+#define MAX_VM    256
+#define MAX_MEM     8
+#define MIN_MEM   256
 
 // maximum virtual memory size
-#define MAX_VM_SIZE      (256*1024*1024)
+#define MAX_VM_SIZE      (MAX_VM*MB)
 // maximum physical memory size
-#define MAX_MEM_SIZE     (  8*1024*1024)
+#define MAX_MEM_SIZE     (MAX_MEM*MB)
 // minimum physical memory size
-#define MIN_MEM_SIZE     (256*1024)
+#define MIN_MEM_SIZE     (MIN_MEM*KB)
 // page size as defined by hardware
 #define PAGE_SIZE        4096
 #define PAGE_MASK        (~(PAGE_SIZE-1))
