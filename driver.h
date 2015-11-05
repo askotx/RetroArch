@@ -188,6 +188,7 @@ typedef struct video_info
    bool fullscreen;
    bool vsync;
    bool force_aspect;
+   unsigned vres;
    bool smooth;
    unsigned input_scale; // Maximum input size: RARCH_SCALE_BASE * input_scale
    bool rgb32; // Use 32-bit RGBA rather than native XBGR1555.

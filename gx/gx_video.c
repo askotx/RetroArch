@@ -340,6 +340,7 @@ static void setup_video_mode(void *data)
 
    VIDEO_GetPreferredMode(&gx_mode);
    gx_set_video_mode(data, 0, 0);
+
 }
 
 static void init_texture(void *data, unsigned width, unsigned height)

@@ -40,46 +40,6 @@
 
 #ifdef GEKKO
 #define MAX_GAMMA_SETTING 2
-
-static unsigned rgui_gx_resolutions[GX_RESOLUTIONS_LAST][2] = {
-   { 512, 192 },
-   { 598, 200 },
-   { 640, 200 },
-   { 384, 224 },
-   { 448, 224 },
-   { 480, 224 },
-   { 512, 224 },
-   { 576, 224 },
-   { 608, 224 },
-   { 640, 224 },
-   { 340, 232 },
-   { 512, 232 },
-   { 512, 236 },
-   { 336, 240 },
-   { 384, 240 },
-   { 512, 240 },
-   { 530, 240 },
-   { 640, 240 },
-   { 512, 384 },
-   { 598, 400 },
-   { 640, 400 },
-   { 384, 448 },
-   { 448, 448 },
-   { 480, 448 },
-   { 512, 448 },
-   { 576, 448 },
-   { 608, 448 },
-   { 640, 448 },
-   { 340, 464 },
-   { 512, 464 },
-   { 512, 472 },
-   { 384, 480 },
-   { 512, 480 },
-   { 530, 480 },
-   { 640, 480 },
-};
-
-static unsigned rgui_current_gx_resolution = GX_RESOLUTIONS_640_480;
 #else
 #define MAX_GAMMA_SETTING 1
 #endif
@@ -1308,7 +1268,8 @@ int menu_set_settings(void *data, void *video_data, unsigned setting, unsigned a
             if(rgui_current_gx_resolution > 0)
             {
                rgui_current_gx_resolution--;
-               gx_set_video_mode(video_data, rgui_gx_resolutions[rgui_current_gx_resolution][0], rgui_gx_resolutions[rgui_current_gx_resolution][1]);
+               g_settings.video.vres = rgui_current_gx_resolution;
+               gx_set_video_mode(video_data, rgui_gx_resolutions[g_settings.video.vres][0], rgui_gx_resolutions[g_settings.video.vres][1]);
             }
          }
          else if (action == RGUI_ACTION_RIGHT)
@@ -1322,8 +1283,9 @@ int menu_set_settings(void *data, void *video_data, unsigned setting, unsigned a
 #endif
 
                rgui_current_gx_resolution++;
-               gx_set_video_mode(video_data, rgui_gx_resolutions[rgui_current_gx_resolution][0],
-                     rgui_gx_resolutions[rgui_current_gx_resolution][1]);
+               g_settings.video.vres = rgui_current_gx_resolution;
+               gx_set_video_mode(video_data, rgui_gx_resolutions[g_settings.video.vres][0], rgui_gx_resolutions[g_settings.video.vres][1]);
+
             }
          }
          break;

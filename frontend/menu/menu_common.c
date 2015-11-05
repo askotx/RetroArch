@@ -273,6 +273,7 @@ void load_menu_game_prepare(void *video_data)
          fill_pathname_base(tmp, g_extern.fullpath, sizeof(tmp));
          snprintf(str, sizeof(str), "INFO - Loading %s ...", tmp);
          msg_queue_push(g_extern.msg_queue, str, 1, 1);
+
       }
 
 #ifdef RARCH_CONSOLE
@@ -303,6 +304,13 @@ void load_menu_game_prepare(void *video_data)
    if (video_data && driver.video_poke && driver.video_poke->set_texture_enable)
       driver.video_poke->set_texture_enable(video_data, false,
             MENU_TEXTURE_FULLSCREEN);
+#ifdef GEKKO
+   if (*g_extern.fullpath)
+   {
+      gx_set_video_mode(video_data, rgui_gx_resolutions[g_settings.video.vres][0], rgui_gx_resolutions[g_settings.video.vres][1]);
+      rgui_current_gx_resolution = g_settings.video.vres;
+   }
+#endif
 }
 
 void load_menu_game_history(unsigned game_index)
